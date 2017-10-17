@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE products SYSTEM "product.dtd" >
+<products>
+	<product serial="ph0001" category="스마트폰">
+		<name>아이폰</name>
+		<maker>애플</maker>
+		<price unit="원">
+			<original>1000000</original>
+			<discount>900000</discount>
+		</price>
+	</product>
+	<product serial="ph0002">
+		<name>겔럭시</name>
+		<maker>삼성</maker>
+		<price unit="원">
+			<original>1000000</original>
+			<discount>700000</discount>
+		</price>
+	</product>
+</products>

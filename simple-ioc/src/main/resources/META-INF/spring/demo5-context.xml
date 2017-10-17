@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<bean id="i" class="com.simple.demo5.IPhone"></bean>
+	<bean id="g" class="com.simple.demo5.Galaxy"></bean>
+	<bean id="v" class="com.simple.demo5.V30"></bean>
+	
+	<bean id="tester1" class="com.simple.demo5.PhoneTester">
+		<property name="phones">
+			<set>
+				<ref bean="i"/>
+				<ref bean="g"/>
+				<ref bean="v"/>
+			</set>
+		</property>
+	</bean>
+	
+	<util:set id="ppp">
+		<ref bean="i"/>
+		<ref bean="g"/>
+		<ref bean="v"/>
+	</util:set>
+	
+	<bean id="tester2" class="com.simple.demo5.PhoneTester">
+		<property name="phones" ref="ppp" />
+	</bean>
+	
+	<bean id="tester3" class="com.simple.demo5.PhoneTester" 
+		p:phones-ref="ppp"/>
+	
+	
+</beans>

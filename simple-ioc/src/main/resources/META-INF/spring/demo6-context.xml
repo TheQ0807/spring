@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="skt" class="com.simple.demo6.SKT"/>
+	<bean id="kt" class="com.simple.demo6.KT"/>
+	<bean id="lg" class="com.simple.demo6.LG"/>
+
+
+	<bean id="service" class="com.simple.demo6.MessageService">
+		<property name="telecomMap">
+			<map>
+				<entry key="S" value-ref="skt"></entry>
+				<entry key="K" value-ref="kt"></entry>
+				<entry key="L" value-ref="lg"></entry>
+			</map>
+		</property>
+	</bean>
+	
+	
+	<!-- 
+		HashMap map = new HashMap();
+		map.put("S",skt);
+		map.put("K",kt);
+		map.put("L",lg);
+		
+		<map>
+			<entry key="S" value-ref="skt"></entry>
+			<entry key="K" value-ref="kt"></entry>
+			<entry key="L" value-ref="lg"></entry>
+		</map>	
+	 -->
+
+
+
+</beans>

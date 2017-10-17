@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="googleMail" class="com.simple.demo1.GoogleMailService">
+		<property name="username" value="hong"/>
+		<property name="password" value="zxcv1234"/>
+		<property name="port" value="3000"/>
+		<property name="host" value="smtp.google.com"/>
+	</bean>
+	
+	<!-- setter injection -->
+	<bean id="sampleService1" class="com.simple.demo1.SampleService">
+		<property name="mailService" ref="googleMail"/>
+	</bean>
+	
+	<!-- contstructor injection -->
+	<bean id="sampleService2" class="com.simple.demo1.SampleService">
+		<constructor-arg name="mailService" ref="googleMail"/>
+		<constructor-arg name="maxMailSize" value="10000"/>
+	</bean>
+	
+	<bean id="sampleService3" class="com.simple.demo1.SampleService">
+		<property name="mailService">
+			<bean class="com.simple.demo1.GoogleMailService">
+				<property name="username" value="lee"/>
+				<property name="password" value="zxcv1234"/>
+				<property name="port" value="3200"/>
+				<property name="host" value="smtp.google.com"/>
+			</bean>
+		</property>
+	</bean>
+
+</beans>

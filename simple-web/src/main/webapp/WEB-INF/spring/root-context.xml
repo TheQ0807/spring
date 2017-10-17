@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="hr" />
+		<property name="password" value="zxcv1234" />
+	</bean>
+	
+	<bean id="sqlMap" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="ds" />
+		<property name="configLocation" value="classpath:/META-INF/ibatis/SqlMapConfig.xml" />
+	</bean>
+
+	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<property name="sqlMapClient" ref="sqlMap" />
+	</bean>
+	
+	<bean id="jobDaoImpl" class="com.sample.employee.dao.JobDaoOracleImpl">
+		<property name="template" ref="sqlMapClientTemplate" />
+	</bean>
+		
+	<bean id="employeeServiceImpl" class="com.sample.employee.service.EmployeeServiceImpl">
+		<property name="jobDao" ref="jobDaoImpl" />
+	</bean>
+		
+</beans>

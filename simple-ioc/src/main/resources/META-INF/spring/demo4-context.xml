@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="fileLogger1" class="com.simple.demo4.FileLogger">
+		<property name="directory" value="c:/temp"/>
+		<property name="filename" value="app.log"/>
+	</bean>
+	
+	<!-- p:xxx는 <property /> 태그를 대신한다. -->
+	<bean id="fileLogger2" class="com.simple.demo4.FileLogger" 
+		p:directory="c:/temp"
+		p:filename="app.log"/>
+
+	<bean id="fileLogger3" class="com.simple.demo4.FileLogger">
+		<constructor-arg name="directory" value="c:/temp" />
+		<constructor-arg name="filename" value="app.log" />
+	</bean>
+
+	<!-- c:xxx는 <constructor-arg />를 대신한다. -->
+	<bean id="fileLogger4" class="com.simple.demo4.FileLogger" 
+		c:directory="c:/temp"
+		c:filename="app.log"/>
+
+</beans>

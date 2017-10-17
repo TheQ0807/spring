@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookList SYSTEM "book.dtd" >
+<bookList>
+	<book>
+		<title>이것이 자바다</title>
+		<author>홍길동</author>
+		<author>김유신</author>
+		<publisher>한빛미디어</publisher>
+		<price>14000</price>
+	</book>
+</bookList>

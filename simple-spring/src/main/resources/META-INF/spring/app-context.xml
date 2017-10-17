@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="kakaotalk" class="com.sample.demo.message.kakaotalkMessageServiceImpl"></bean>
+	<bean id="sms" class="com.sample.demo.message.SMSMessageServiceImpl"></bean>
+
+	<bean id="notice" class="com.sample.demo.notice.NoticeService">
+		<property name="messageService" ref="sms" />
+	</bean>
+	
+	<bean id="eventService" class="com.sample.demo.event.EventService">
+		<property name="noticeService" ref="notice" />
+	</bean>
+	
+	<bean id="orderService" class="com.sample.demo.order.OrderService">
+		<property name="noticeService" ref="notice" />
+	</bean>
+
+
+</beans>

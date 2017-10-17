@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT products (product*)>
+<!ELEMENT product (name,maker,price)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT maker (#PCDATA)>
+<!ELEMENT price (original,discount)>
+<!ELEMENT original (#PCDATA)>
+<!ELEMENT discount (#PCDATA)>
+
+
+<!ATTLIST product serial ID #REQUIRED
+				  category CDATA #IMPLIED>
+<!ATTLIST price unit (원|달러|엔|유로) "원">
