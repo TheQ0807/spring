@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<bean id="simpleService" class="com.sample.aop.demo3.SimpleServieImpl"/>
+	<bean id="exceptionTransfer" class="com.sample.aop.demo3.ExceptionTransfer" />
+	<bean id="simpleAdvice" class="com.sample.aop.demo3.SimpleAdvice" />
+	
+	
+	<aop:config>
+		<aop:aspect ref="exceptionTransfer">
+													<!-- 예외의 이름을 지정해주는것  -->
+			<aop:after-throwing method="transfer" throwing="ex" pointcut="bean(simpleService)"/>
+		</aop:aspect>
+		
+		<aop:aspect ref="simpleAdvice">
+										<!-- 대상객체의 메소드가 성공적으로 시행된 후에 실행되는 공통기능 -->
+			<aop:after-returning method="returnning1" returning="value" pointcut="bean(simpleService)"/>
+										<!-- 대상 객체의 메소드가 성공/실패 여부와 상관없이 실행 후에 실행되는 공통 기능 -->
+			<aop:after method="returnning2" pointcut="bean(simpleService)"/>
+		</aop:aspect>
+	</aop:config>
+	
+	
+
+</beans>
